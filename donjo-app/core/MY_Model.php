@@ -22,7 +22,16 @@ class MY_Model extends CI_Model {
 				$data = $this->first_artikel_m->get_artikel($cut[1]);
 				$url = ($data) ? ($cut[0].'/'.buat_slug($data)) : ($url);
 				break;
-
+			case 'arsip':
+			case 'peraturan_desa':
+			case 'data_analisis':
+			case 'ambil_data_covid':
+			case 'informasi_publik':
+			case 'load_aparatur_desa':
+			case 'load_apbdes':
+			case 'load_aparatur_wilayah':
+			case 'peta':
+				break;
 			default:
 				$url = 'first/'.$url;
 				break;
@@ -81,7 +90,24 @@ class MY_Model extends CI_Model {
 			->where('table_name', $tabel)
 			->where('index_name', $indeks)
 			->get()->row()->ada;
-		if ($ada) $this->db->query("DROP INDEX $indeks ON $tabel");
+		if ($ada)
+			return $this->db->query("DROP INDEX $indeks ON $tabel");
+		else return true;
+	}
+
+	public function tambah_indeks($tabel, $kolom)
+	{
+		$db = $this->db->database;
+		$ada = $this->db
+			->select("COUNT(index_name) as ada")
+			->from('INFORMATION_SCHEMA.STATISTICS')
+			->where('table_schema', $db)
+			->where('table_name', $tabel)
+			->where('index_name', $kolom)
+			->get()->row()->ada;
+		if ( ! $ada)
+			return $this->db->query("ALTER TABLE $tabel ADD UNIQUE $kolom (`$kolom`)");
+		else return true;
 	}
 
 }

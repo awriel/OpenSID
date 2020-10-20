@@ -409,8 +409,7 @@ class First_artikel_m extends CI_Model {
 	}
 
 	public function get_artikel($url)
-	{
-		$this->hit($url); // catat artikel diakses
+	{		
 		$this->db->select('a.*, u.nama AS owner, k.kategori, k.slug AS kat_slug, YEAR(tgl_upload) AS thn, MONTH(tgl_upload) AS bln, DAY(tgl_upload) AS hri')
 			->from('artikel a')
 			->join('user u', 'a.id_user = u.id', 'left')
@@ -513,14 +512,14 @@ class First_artikel_m extends CI_Model {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('komentar', 'Komentar', 'required');
 		$this->form_validation->set_rules('owner', 'Nama', 'required');
-		$this->form_validation->set_rules('no_hp', 'No HP', 'required');
+		$this->form_validation->set_rules('no_hp', 'No HP', 'numeric|required');
 		$this->form_validation->set_rules('email', 'Email', 'valid_email');
 
 		if ($this->form_validation->run() == TRUE)
 		{
 			$data['status'] = 2;
 			$data['id_artikel'] = $id;
-			$outp = $this->db->insert('komentar',$data);
+			$outp = $this->db->insert('komentar', $data);
 		}
 		else
 		{

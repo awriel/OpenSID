@@ -45,11 +45,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link 	https://github.com/OpenSID/OpenSID
  */
 
-define("VERSION", '20.09-pasca');
+define("VERSION", '20.10-pasca');
 /* Untuk migrasi database. Simpan nilai ini di tabel migrasi untuk menandakan sudah migrasi ke versi ini.
    Versi database = [yyyymmdd][nomor urut dua digit]. Ubah setiap kali mengubah struktur database.
 */
-define('VERSI_DATABASE', '2020090102');
+define('VERSI_DATABASE', '2020100102');
 define("LOKASI_LOGO_DESA", 'desa/logo/');
 define("LOKASI_ARSIP", 'desa/arsip/');
 define("LOKASI_CONFIG_DESA", 'desa/config/');
@@ -911,6 +911,13 @@ function buat_slug($data_slug)
 {
 	$slug = $data_slug['thn'].'/'.$data_slug['bln'].'/'.$data_slug['hri'].'/'.$data_slug['slug'];
 	return $slug;
+}
+
+function namafile($str)
+{
+	$tgl =  date('d_m_Y');
+	$filename = urlencode(underscore(strtolower($str))."_".$tgl);
+	return $filename;
 }
 
 function luas($int=0, $satuan="meter")

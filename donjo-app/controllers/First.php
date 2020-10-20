@@ -70,7 +70,7 @@ class First extends Web_Controller {
 		}
 
 		mandiri_timeout();
-		$this->load->model('header_model');
+
 		$this->load->model('config_model');
 		$this->load->model('first_m');
 		$this->load->model('first_artikel_m');
@@ -192,7 +192,7 @@ class First extends Web_Controller {
 		}
 		$this->load->model('shortcode_model');
 		$data = $this->includes;
-
+		$this->first_artikel_m->hit($url); // catat artikel diakses
 		$data['single_artikel'] = $this->first_artikel_m->get_artikel($url);
 		$id = $data['single_artikel']['id'];
 
@@ -226,7 +226,7 @@ class First extends Web_Controller {
 		$this->_get_common_data($data);
 
 		$this->set_template('layouts/arsip.tpl.php');
-		$this->load->view($this->template,$data);
+		$this->load->view($this->template, $data);
 	}
 
 	// Halaman arsip album galeri
@@ -314,6 +314,8 @@ class First extends Web_Controller {
 
 	public function data_analisis($stat="", $sb=0, $per=0)
 	{
+		if (!$this->web_menu_model->menu_aktif('data_analisis')) show_404();
+		
 		$data = $this->includes;
 
 		if ($stat == "")
@@ -600,7 +602,7 @@ class First extends Web_Controller {
 				break;
 		}
 
-		$this->load->view('gis/aparatur_wilayah',$data);
+		$this->load->view('gis/aparatur_wilayah', $data);
 	}
 
 	public function ambil_data_covid()
@@ -610,5 +612,4 @@ class First extends Web_Controller {
 			echo $content;
 		}
 	}
-
 }

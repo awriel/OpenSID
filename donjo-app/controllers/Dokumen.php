@@ -89,10 +89,7 @@ class Dokumen extends Admin_Controller {
 		$data['main'] = $this->web_dokumen_model->list_data($kat, $o, $data['paging']->offset, $data['paging']->per_page);
 		$data['keyword'] = $this->web_dokumen_model->autocomplete();
 
-		$this->load->view('header', $this->header);
-		$this->load->view('nav');
-		$this->load->view('dokumen/table', $data);
-		$this->load->view('footer');
+		$this->render('dokumen/table', $data);
 	}
 
 	public function form($kat=1, $p=1, $o=0, $id='')
@@ -114,10 +111,7 @@ class Dokumen extends Admin_Controller {
 		$data['kat_nama'] = $this->web_dokumen_model->kat_nama($kat);
 		$data['list_kategori_publik'] = $this->referensi_model->list_ref_flip(KATEGORI_PUBLIK);
 
-		$this->load->view('header', $this->header);
-		$this->load->view('nav');
-		$this->load->view('dokumen/form', $data);
-		$this->load->view('footer');
+		$this->render('dokumen/form', $data);
 	}
 
 	public function search()
@@ -186,7 +180,7 @@ class Dokumen extends Admin_Controller {
 	public function dialog_cetak($kat=1)
 	{
 		$data['form_action'] = site_url("dokumen/cetak/$kat");
-		$data['pamong'] = $this->pamong_model->list_data(true);
+		$data['pamong'] = $this->pamong_model->list_data();
 		$data['tahun_laporan'] = $this->web_dokumen_model->list_tahun($kat);
 		$this->load->view('dokumen/dialog_cetak', $data);
 	}
@@ -195,7 +189,7 @@ class Dokumen extends Admin_Controller {
 	{
 		$data['main'] = $this->web_dokumen_model->data_cetak($kat, $this->input->post('tahun'));
 		$data['input'] = $this->input->post();
-		$data['pamong'] = $this->pamong_model->list_data(true);
+		$data['pamong'] = $this->pamong_model->list_data();
 		$data['kat'] = $kat;
 		$data['tahun'] = $this->input->post('tahun');
 		if ($kat == 1)
@@ -209,13 +203,13 @@ class Dokumen extends Admin_Controller {
 		if ($kat == 2) $template = 'sk_kades_print';
 		elseif ($kat == 3) $template = 'perdes_print';
 		else $template = 'dokumen_print';
-		$this->load->view("dokumen/$template",$data);
+		$this->load->view("dokumen/$template", $data);
 	}
 
 	public function dialog_excel($kat=1)
 	{
 		$data['form_action'] = site_url("dokumen/excel/$kat");
-		$data['pamong'] = $this->pamong_model->list_data(true);
+		$data['pamong'] = $this->pamong_model->list_data();
 		$data['tahun_laporan'] = $this->web_dokumen_model->list_tahun($kat);
 		$this->load->view('dokumen/dialog_cetak', $data);
 	}
@@ -224,7 +218,7 @@ class Dokumen extends Admin_Controller {
 	{
 		$data['main'] = $this->web_dokumen_model->data_cetak($kat, $this->input->post('tahun'));
 		$data['input'] = $this->input->post();
-		$data['pamong'] = $this->pamong_model->list_data(true);
+		$data['pamong'] = $this->pamong_model->list_data();
 		$data['kat'] = $kat;
 		$data['tahun'] = $this->input->post('tahun');
 		if ($kat == 1)
@@ -255,5 +249,4 @@ class Dokumen extends Admin_Controller {
 		else
 			$this->output->set_status_header('404');
 	}
-
 }

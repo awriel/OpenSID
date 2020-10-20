@@ -113,6 +113,8 @@
 		<!-- Untuk carousel, slider, teks_berjalan dan widget aparatur_desa -->
 		<script src="<?php echo base_url()?>assets/front/js/jquery.cycle2.min.js"></script>
 		<script src="<?php echo base_url()?>assets/front/js/jquery.cycle2.carousel.js"></script>
+		<?php $this->load->view('global/validasi_form'); ?>
+
 		<!-- Diperlukan untuk javascript yg mengakses resources -->
 		<script type="text/javascript">
 			var BASE_URL = "<?= base_url(); ?>";
@@ -157,7 +159,7 @@
 							</div>
 							<div id="divlogo-img">
 								<div class="intube">
-									<a href="<?= site_url(); ?>first/">
+									<a href="<?= site_url(); ?>">
 									<img src="<?= gambar_desa($desa['logo']);?>" alt="<?= $desa['nama_desa']?>"/>
 									</a>
 								</div>
