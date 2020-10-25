@@ -47,6 +47,11 @@ class Migrasi_2010_ke_2011 extends MY_model {
 
 	public function up()
 	{
+<<<<<<< HEAD
+=======
+		$this->tambah_kolom_ket();
+		
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 		$hasil = true;
 		// Ubah tipe data field nilai menjadi INT
 		$hasil =& $this->db->query('ALTER TABLE `analisis_parameter` MODIFY COLUMN nilai INT(3) NOT NULL DEFAULT 0');
@@ -54,4 +59,19 @@ class Migrasi_2010_ke_2011 extends MY_model {
 		status_sukses($hasil);
 	}
 
+<<<<<<< HEAD
+=======
+	private function tambah_kolom_ket()
+	{
+		//tambah kolom keterangan di tabel kelompok_anggota
+		if (!$this->db->field_exists('keterangan', 'kelompok_anggota'))
+			$this->dbforge->add_column('kelompok_anggota', array(
+				'keterangan' => array(
+				'type' => 'text',
+				'null' => TRUE,
+				),
+			));
+	}
+
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 }

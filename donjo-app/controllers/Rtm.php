@@ -118,7 +118,11 @@ class Rtm extends Admin_Controller {
 	*/
 	public function daftar($aksi = '', $privasi_nik = 0)
 	{
+<<<<<<< HEAD
 		$data['main'] = $this->rtm_model->list_data($this->session->order_by, 0, 10000);
+=======
+		$data['main'] = $this->rtm_model->list_data($this->session->order_by, 0);
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 		if ($privasi_nik == 1) $data['privasi_nik'] = true;
 		$this->load->view("sid/kependudukan/rtm_$aksi", $data);
 	}

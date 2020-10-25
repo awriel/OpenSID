@@ -162,7 +162,11 @@
 								<li>
 									<a href="<?= site_url('permohonan_surat_admin/clear'); ?>">
 										<span><i class="fa fa-print fa-lg" title="Permohonan Surat"></i>&nbsp;</span>
+<<<<<<< HEAD
 										<span class="badge" id="b_permohonan_surat"></span>
+=======
+										<span class="badge" id="b_permohonan_surat" style="display: none;"></span>
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 									</a>
 								</li>
 							<?php endif; ?>
@@ -170,7 +174,11 @@
 								<li>
 									<a href="<?= site_url('komentar'); ?>">
 										<span><i class="fa fa-commenting-o fa-lg" title="Komentar"></i>&nbsp;</span>
+<<<<<<< HEAD
 										<span class="badge" id="b_komentar"></span>
+=======
+										<span class="badge" id="b_komentar" style="display: none;"></span>
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 									</a>
 								</li>
 							<?php endif; ?>
@@ -178,7 +186,11 @@
 								<li>
 									<a href="<?= site_url('mailbox'); ?>">
 										<span><i class="fa fa-envelope-o fa-lg" title="Pesan Masuk"></i>&nbsp;</span>
+<<<<<<< HEAD
 										<span class="badge" id="b_inbox"></span>
+=======
+										<span class="badge" id="b_inbox" style="display: none;"></span>
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 									</a>
 								</li>
 							<?php endif; ?>

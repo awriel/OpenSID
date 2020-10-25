@@ -196,9 +196,15 @@ class Dpt extends Admin_Controller {
 		redirect("dpt/index/1/$o");
 	}
 
+<<<<<<< HEAD
 	public function cetak($o=0, $aksi = '', $privasi_nik = 0)
 	{
 		$data['main'] = $this->dpt_model->list_data($o, 0, 10000);
+=======
+	public function cetak($o = 0, $aksi = '', $privasi_nik = 0)
+	{
+		$data['main'] = $this->dpt_model->list_data($o, 0);
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 		$data['aksi'] = $aksi;
 		if ($privasi_nik == 1) $data['privasi_nik'] = true;
 		$this->load->view("dpt/dpt_$aksi", $data);

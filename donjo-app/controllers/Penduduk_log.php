@@ -187,7 +187,11 @@ class Penduduk_log extends Admin_Controller {
 
 	public function cetak($o = 0, $aksi = '', $privasi_nik = 0)
 	{
+<<<<<<< HEAD
 		$data['main'] = $this->penduduk_log_model->list_data($o, 0, 10000);
+=======
+		$data['main'] = $this->penduduk_log_model->list_data($o, 0);
+>>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
 		if ($privasi_nik == 1) $data['privasi_nik'] = true;
 		$this->load->view("penduduk_log/penduduk_log_$aksi", $data);
 	}
