@@ -45,15 +45,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @link 	https://github.com/OpenSID/OpenSID
  */
 
-define("VERSION", '20.10-pasca');
+define("VERSION", '20.11-pasca');
 /* Untuk migrasi database. Simpan nilai ini di tabel migrasi untuk menandakan sudah migrasi ke versi ini.
    Versi database = [yyyymmdd][nomor urut dua digit]. Ubah setiap kali mengubah struktur database.
 */
+<<<<<<< HEAD
 <<<<<<< HEAD
 define('VERSI_DATABASE', '2020100102');
 =======
 define('VERSI_DATABASE', '2020100103');
 >>>>>>> d075346c9026dc24ce94b598fdcbaf4ec93bcb7b
+=======
+define('VERSI_DATABASE', '2020110101');
+>>>>>>> 300ac5eb13126744940838ae8099d7ed0071acda
 define("LOKASI_LOGO_DESA", 'desa/logo/');
 define("LOKASI_ARSIP", 'desa/arsip/');
 define("LOKASI_CONFIG_DESA", 'desa/config/');
